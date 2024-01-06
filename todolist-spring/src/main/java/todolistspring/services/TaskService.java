@@ -20,4 +20,37 @@ public class TaskService {
         List<Task> tasks = taskRepository.findAll();
         return tasks.stream().map(TaskDTO::new).toList();
     }
+
+    @Transactional(readOnly = true)
+    public TaskDTO findById(Long id) {
+        Task task = taskRepository.findById(id).get();
+        return new TaskDTO(task);
+    }
+
+    @Transactional
+    public TaskDTO save(TaskDTO taskDTO) {
+        Task task = new Task();
+        task.setTitle(taskDTO.title());
+        task.setDescription(taskDTO.description());
+        task.setCompleted(taskDTO.isCompleted());
+        task = taskRepository.save(task);
+
+        return new TaskDTO(task);
+    }
+
+    @Transactional
+    public TaskDTO updateById(Long id, TaskDTO taskDTO) {
+        Task task = taskRepository.getReferenceById(id);
+        task.setTitle(taskDTO.title());
+        task.setDescription(taskDTO.description());
+        task.setCompleted(taskDTO.isCompleted());
+        task = taskRepository.save(task);
+
+        return new TaskDTO(task);
+    }
+
+    @Transactional
+    public void deleteById(Long id) {
+        taskRepository.deleteById(id);
+    }
 }
