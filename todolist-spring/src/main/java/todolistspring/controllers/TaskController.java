@@ -1,10 +1,13 @@
 package todolistspring.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import todolistspring.dto.TaskDTO;
 import todolistspring.services.TaskService;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -15,27 +18,37 @@ public class TaskController {
     private TaskService taskService;
 
     @GetMapping
-    public List<TaskDTO> findAll() {
-        return taskService.findAll();
+    public ResponseEntity<List<TaskDTO>> findAll() {
+        List<TaskDTO> tasks = taskService.findAll();
+        return ResponseEntity.ok(tasks);
     }
 
     @GetMapping("/{id}")
-    public TaskDTO findById(@PathVariable Long id) {
-        return taskService.findById(id);
+    public ResponseEntity<TaskDTO> findById(@PathVariable Long id) {
+        TaskDTO task = taskService.findById(id);
+        return ResponseEntity.ok(task);
     }
 
     @PostMapping
-    public TaskDTO save(@RequestBody TaskDTO taskDTO) {
-        return taskService.save(taskDTO);
+    public ResponseEntity<TaskDTO> save(@RequestBody TaskDTO taskDTO) {
+        TaskDTO task = taskService.save(taskDTO);
+        URI uri = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(task.id())
+                .toUri();
+        return ResponseEntity.created(uri).body(task);
     }
 
     @PutMapping("/{id}")
-    public TaskDTO updateById(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
-        return taskService.updateById(id, taskDTO);
+    public ResponseEntity<TaskDTO> updateById(@PathVariable Long id, @RequestBody TaskDTO taskDTO) {
+        TaskDTO task = taskService.updateById(id, taskDTO);
+        return ResponseEntity.ok(task);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         taskService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
