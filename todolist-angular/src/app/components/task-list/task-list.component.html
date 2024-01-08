@@ -1,0 +1,18 @@
+<div class="task-list">
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.isCompleted ? 'Completed' : 'In Progress' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
