@@ -17,4 +17,8 @@ export class TaskService {
   public findAll(): Observable<Task[]> {
     return this.http.get<Task[]>(this.tasksUrl);
   }
+
+  public save(task: Task): Observable<Task> {
+    return this.http.post<Task>(this.tasksUrl, task);
+  }
 }

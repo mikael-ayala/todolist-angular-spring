@@ -1,8 +1,26 @@
 .task-list {
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  gap: 3.2rem;
   margin-top: 3.2rem;
+
+  .button {
+    background-color: #7FC7D9;
+    border-radius: 0.8rem;
+    box-shadow: 0px 0px 23px -3px rgb(231, 231, 231);
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-weight: 700;
+    padding: 0.8rem;
+    transition: transform 0.5s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 
   table {
     border-radius: 1.6rem;
