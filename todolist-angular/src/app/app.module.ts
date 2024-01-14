@@ -8,13 +8,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { FormsModule } from '@angular/forms';
+import { TaskUpdateFormComponent } from './components/task-update-form/task-update-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     TaskListComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    TaskUpdateFormComponent
   ],
   imports: [
     BrowserModule,

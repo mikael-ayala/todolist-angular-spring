@@ -1,0 +1,38 @@
+.card-form {
+  align-items: center;
+  background-color: #7FC7D9;
+  border-radius: 1.6rem;
+  box-shadow: 0px 0px 23px -3px rgb(231, 231, 231);
+  display: flex;
+  font-size: 4rem;
+  justify-content: center;
+  margin-inline: auto;
+  margin-top: 3.2rem;
+  padding: 0.8rem;
+  width: 30%;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    input, textarea, select, button {
+      border-radius: 0.8rem;
+      padding: 0.8rem;
+    }
+
+    select > option {
+      font-size: 1.6rem;
+    }
+
+    button {
+      cursor: pointer;
+      margin-block: 1.6rem;
+      transition: transform 0.5s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

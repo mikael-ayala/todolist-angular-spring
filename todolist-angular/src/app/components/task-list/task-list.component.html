@@ -9,6 +9,7 @@
         <th>Title</th>
         <th>Description</th>
         <th>Status</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +17,12 @@
         <td>{{ task.title }}</td>
         <td>{{ task.description }}</td>
         <td>{{ task.isCompleted ? 'Completed' : 'In Progress' }}</td>
+        <td
+          ngDefaultControl
+          [(ngModel)]="task.id"
+          (click)="update(task.id!)"
+          class="material-icons edit_note"
+        >edit_note</td>
       </tr>
     </tbody>
   </table>

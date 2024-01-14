@@ -24,4 +24,9 @@ export class TaskListComponent implements OnInit {
     public onClick() {
       this.router.navigate(['save']);
     }
+
+    public update(id: number) {
+      this.taskService.setId(id);
+      this.router.navigate(['update']);
+    }
 }

@@ -21,7 +21,6 @@ export class TaskFormComponent {
   }
 
   public onSubmit() {
-    console.log(this.task);
     this.taskService.save(this.task).subscribe(result => this.returnToHome());
   }
 
