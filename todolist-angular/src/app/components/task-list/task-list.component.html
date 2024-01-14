@@ -10,6 +10,7 @@
         <th>Description</th>
         <th>Status</th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -23,6 +24,12 @@
           (click)="update(task.id!)"
           class="material-icons edit_note"
         >edit_note</td>
+        <td
+          ngDefaultControl
+          [(ngModel)]="task.id"
+          (click)="delete(task.id!)"
+          class="material-icons delete"
+        >delete</td>
       </tr>
     </tbody>
   </table>

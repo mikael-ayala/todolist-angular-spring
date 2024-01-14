@@ -17,16 +17,24 @@ export class TaskListComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-      this.taskService.findAll()
-      .subscribe(task => this.tasks = task);
+      this.findAll();
     }
 
     public onClick() {
       this.router.navigate(['save']);
     }
 
-    public update(id: number) {
+    public findAll(): void {
+      this.taskService.findAll()
+        .subscribe(task => this.tasks = task);
+    }
+
+    public update(id: number): void {
       this.taskService.setId(id);
       this.router.navigate(['update']);
+    }
+
+    public delete(id:number): void {
+      this.taskService.delete(id).subscribe(() => this.findAll());
     }
 }
