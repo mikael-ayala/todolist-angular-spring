@@ -6,18 +6,26 @@
   <table>
     <thead>
       <tr>
+        <th></th>
         <th>Title</th>
         <th>Description</th>
-        <th>Status</th>
         <th></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let task of tasks">
+        <td>
+          <input
+            ngDefaultControl
+            [(ngModel)]="task.isCompleted"
+            type="checkbox"
+            name="status"
+            (change)="onCheckboxChange($event, task.id!)"
+          />
+        </td>
         <td>{{ task.title }}</td>
         <td>{{ task.description }}</td>
-        <td>{{ task.isCompleted ? 'Completed' : 'In Progress' }}</td>
         <td
           ngDefaultControl
           [(ngModel)]="task.id"

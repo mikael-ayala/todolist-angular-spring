@@ -11,6 +11,8 @@ import { TaskService } from '../../services/task.service';
 export class TaskListComponent implements OnInit {
     tasks: Task[] = [];
 
+    task: Task = new Task();
+
     constructor(
       private router: Router,
       private taskService: TaskService
@@ -20,8 +22,16 @@ export class TaskListComponent implements OnInit {
       this.findAll();
     }
 
-    public onClick() {
+    public onClick(): void {
       this.router.navigate(['save']);
+    }
+
+    public onCheckboxChange(event: any, id: number): void {
+      this.taskService.findById(id).subscribe(task => {
+        this.task = task;
+        this.task.isCompleted = event.target.checked;
+        this.taskService.update(this.task, id).subscribe();
+      });
     }
 
     public findAll(): void {
