@@ -1,0 +1,1 @@
+INSERT INTO task (title, description, is_completed) VALUES ('Example title', 'Example description', 0);
