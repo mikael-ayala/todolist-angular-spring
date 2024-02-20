@@ -3,7 +3,7 @@
     class="button"
     (click)="onClick()"
   >Add new task</button>
-  <table>
+  <table *ngIf="tasks.length > 0">
     <thead>
       <tr>
         <th></th>
