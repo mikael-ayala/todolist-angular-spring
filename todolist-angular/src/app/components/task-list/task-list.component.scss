@@ -89,19 +89,40 @@
 
       tr > td:nth-child(4),
       tr > td:nth-child(5) {
-        display: table-cell;
+        font-size: 2rem;
         cursor: pointer;
+        display: table-cell;
 
         &:hover {
           color: #176B87;
         }
       }
-
-      tr > td:nth-child(5) {
-        font-size: 2rem;
-      }
     }
   }
 }
 
+@media screen and (max-width: 1360px) {
+  .task-list table {
+    width: 60%;
+  }
+}
 
+@media screen and (max-width: 1024px) {
+  .task-list table {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .task-list table {
+    width: 80%;
+
+    thead {
+      font-size: 3.2rem;
+    }
+
+    tbody {
+      font-size: 3.2rem;
+    }
+  }
+}
